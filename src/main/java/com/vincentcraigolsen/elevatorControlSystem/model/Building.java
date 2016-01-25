@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Building {
+public class Building extends ArrayList{
 
-    public List<Floor> floors;
+    public ArrayList<Floor> floors;
 
     public Building() {
     }
 
     public Building(Integer size) {
-        List<Floor> floors = new ArrayList<>();
+        ArrayList<Floor> floors = new ArrayList<>();
         for (int i = 1; i <= size; i++) {
             Floor floor = new Floor(i);
             floors.add(floor);
@@ -20,7 +20,7 @@ public class Building {
         this.floors = floors;
     }
 
-    public Building(List<Floor> floors) {
+    public Building(ArrayList<Floor> floors) {
         this.floors = floors;
     }
 
@@ -32,14 +32,14 @@ public class Building {
         return floors;
     }
 
-    public void setFloors(List<Floor> floors) {
+    public void setFloors(ArrayList<Floor> floors) {
         this.floors = floors;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.floors);
+        hash = 23 * hash + Objects.hashCode(this.floors);
         return hash;
     }
 

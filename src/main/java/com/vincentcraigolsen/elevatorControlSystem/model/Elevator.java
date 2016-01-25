@@ -11,7 +11,7 @@ public class Elevator {
     public Boolean down;
     public Boolean moving;
     public Boolean doorOpen;
-    public Integer floorsPassed;
+    public Integer floorsTraveled;
     public Integer tripsMade;
     public Boolean maintenanceMode;
 
@@ -23,7 +23,7 @@ public class Elevator {
         this.down = false;
         this.moving = false;
         this.doorOpen = true;
-        this.floorsPassed = 0;
+        this.floorsTraveled = 0;
         this.tripsMade = 0;
         this.maintenanceMode = false;
     }
@@ -36,7 +36,7 @@ public class Elevator {
         this.down = down;
         this.moving = moving;
         this.doorOpen = doorOpen;
-        this.floorsPassed = floorsPassed;
+        this.floorsTraveled = floorsPassed;
         this.tripsMade = tripsMade;
         this.maintenanceMode = maintenanceMode;
     }
@@ -98,11 +98,11 @@ public class Elevator {
     }
 
     public Integer getFloorsPassed() {
-        return floorsPassed;
+        return floorsTraveled;
     }
 
     public void setFloorsPassed(Integer floorsPassed) {
-        this.floorsPassed = floorsPassed;
+        this.floorsTraveled = floorsPassed;
     }
 
     public Integer getTripsMade() {
@@ -131,7 +131,7 @@ public class Elevator {
         hash = 13 * hash + Objects.hashCode(this.down);
         hash = 13 * hash + Objects.hashCode(this.moving);
         hash = 13 * hash + Objects.hashCode(this.doorOpen);
-        hash = 13 * hash + Objects.hashCode(this.floorsPassed);
+        hash = 13 * hash + Objects.hashCode(this.floorsTraveled);
         hash = 13 * hash + Objects.hashCode(this.tripsMade);
         hash = 13 * hash + Objects.hashCode(this.maintenanceMode);
         return hash;
@@ -167,7 +167,7 @@ public class Elevator {
         if (!Objects.equals(this.doorOpen, other.doorOpen)) {
             return false;
         }
-        if (!Objects.equals(this.floorsPassed, other.floorsPassed)) {
+        if (!Objects.equals(this.floorsTraveled, other.floorsTraveled)) {
             return false;
         }
         if (!Objects.equals(this.tripsMade, other.tripsMade)) {
@@ -181,6 +181,6 @@ public class Elevator {
 
     @Override
     public String toString() {
-        return "Elevator{" + "buttonPanel=" + buttonPanel + ", currentFloor=" + currentFloor + ", destinationFloor=" + destinationFloor + ", up=" + up + ", down=" + down + ", moving=" + moving + ", doorOpen=" + doorOpen + ", floorsPassed=" + floorsPassed + ", tripsMade=" + tripsMade + ", maintenanceMode=" + maintenanceMode + '}';
+        return "Elevator{" + "buttonPanel=" + buttonPanel + ", currentFloor=" + currentFloor + ", destinationFloor=" + destinationFloor + ", up=" + up + ", down=" + down + ", moving=" + moving + ", doorOpen=" + doorOpen + ", floorsPassed=" + floorsTraveled + ", tripsMade=" + tripsMade + ", maintenanceMode=" + maintenanceMode + '}';
     }
 }

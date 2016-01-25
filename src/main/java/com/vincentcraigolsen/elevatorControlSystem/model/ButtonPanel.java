@@ -1,16 +1,15 @@
 package com.vincentcraigolsen.elevatorControlSystem.model;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class ButtonPanel {
     public Boolean openDoor;
     public Boolean closeDoor;
-    public Map<Integer, Boolean> floorButtons;
+    public TreeMap<Integer, Boolean> floorButtons;
 
     public ButtonPanel(Integer numOfFloors) {
-        Map<Integer, Boolean> buttons = new HashMap<>();
+        TreeMap<Integer, Boolean> buttons = new TreeMap<>();
         for (int i = 1; i <= numOfFloors; i++) {
             buttons.put(i, false);
         }
@@ -33,20 +32,20 @@ public class ButtonPanel {
         this.closeDoor = closeDoor;
     }
 
-    public Map<Integer, Boolean> getFloorButtons() {
+    public TreeMap<Integer, Boolean> getFloorButtons() {
         return floorButtons;
     }
 
-    public void setFloorButtons(Map<Integer, Boolean> floorButtons) {
+    public void setFloorButtons(TreeMap<Integer, Boolean> floorButtons) {
         this.floorButtons = floorButtons;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.openDoor);
-        hash = 59 * hash + Objects.hashCode(this.closeDoor);
-        hash = 59 * hash + Objects.hashCode(this.floorButtons);
+        hash = 29 * hash + Objects.hashCode(this.openDoor);
+        hash = 29 * hash + Objects.hashCode(this.closeDoor);
+        hash = 29 * hash + Objects.hashCode(this.floorButtons);
         return hash;
     }
 

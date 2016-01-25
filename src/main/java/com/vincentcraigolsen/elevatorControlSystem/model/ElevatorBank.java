@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ElevatorBank {
+public class ElevatorBank extends ArrayList {
 
-    public List<Elevator> elevators;
+    public ArrayList<Elevator> elevators;
 
     public ElevatorBank() {
     }
 
     public ElevatorBank(Integer numOfFloors, Integer numOfElevators) {
-        List<Elevator> elevators = new ArrayList<>();
+        ArrayList<Elevator> elevators = new ArrayList<>();
         for (int i = 1; i <= numOfElevators; i++) {
             Elevator elevator = new Elevator(numOfFloors);
             elevators.add(elevator);
@@ -20,7 +20,7 @@ public class ElevatorBank {
         this.elevators = elevators;
     }
 
-    public ElevatorBank(List<Elevator> elevators) {
+    public ElevatorBank(ArrayList<Elevator> elevators) {
         this.elevators = elevators;
     }
 
@@ -32,14 +32,14 @@ public class ElevatorBank {
         return elevators;
     }
 
-    public void setElevators(List<Elevator> elevators) {
+    public void setElevators(ArrayList<Elevator> elevators) {
         this.elevators = elevators;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.elevators);
+        hash = 97 * hash + Objects.hashCode(this.elevators);
         return hash;
     }
 
