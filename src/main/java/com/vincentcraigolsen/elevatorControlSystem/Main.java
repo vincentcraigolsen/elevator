@@ -1,7 +1,10 @@
 package com.vincentcraigolsen.elevatorControlSystem;
 
+import static com.vincentcraigolsen.elevatorControlSystem.CreateBuildingAndElevators.createBuildingAndElevators;
+
 public class Main {
     public static void main (String[] args){
+        createBuildingAndElevators(args);
         Integer numberOfFloors, numberOfElevators;
         
         
