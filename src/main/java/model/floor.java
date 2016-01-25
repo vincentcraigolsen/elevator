@@ -2,13 +2,19 @@ package model;
 
 import java.util.Objects;
 
-public class floor {
+public class Floor {
 
     public Integer floorNumber;
     public Boolean up;
     public Boolean down;
 
-    public floor() {
+    public Floor(Integer floorNumber) {
+        this.floorNumber = floorNumber;
+        this.up = false;
+        this.down = false;
+    }
+
+    public Floor() {
     }
 
     public Integer getFloorNumber() {
@@ -50,7 +56,7 @@ public class floor {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final floor other = (floor) obj;
+        final Floor other = (Floor) obj;
         if (!Objects.equals(this.floorNumber, other.floorNumber)) {
             return false;
         }

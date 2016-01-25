@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -8,8 +9,12 @@ public class ButtonPanel {
     public Boolean closeDoor;
     public Map<Integer, Boolean> floorButtons;
 
-    public ButtonPanel(Map<Integer, Boolean> floorButtons) {
-        this.floorButtons = floorButtons;
+    public ButtonPanel(Integer numOfFloors) {
+        Map<Integer, Boolean> buttons = new HashMap<>();
+        for (int i = 1; i <= numOfFloors; i++) {
+            buttons.put(i, false);
+        }
+        this.floorButtons = buttons;
     }
 
     public Boolean getOpenDoor() {
