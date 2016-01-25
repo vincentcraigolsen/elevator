@@ -1,23 +1,21 @@
 package com.vincentcraigolsen.elevatorControlSystem;
 
-import static com.vincentcraigolsen.elevatorControlSystem.CreateBuildingAndElevators.createBuildingAndElevators;
+import static com.vincentcraigolsen.elevatorControlSystem.VerifyArgs.tryParse;
+import static com.vincentcraigolsen.elevatorControlSystem.VerifyArgs.verifyArgs;
+import com.vincentcraigolsen.elevatorControlSystem.model.Building;
+import com.vincentcraigolsen.elevatorControlSystem.model.ElevatorBank;
 
 public class Main {
     public static void main (String[] args){
-        createBuildingAndElevators(args);
-        Integer numberOfFloors, numberOfElevators;
+        verifyArgs(args);
+        Integer numOfFloors = tryParse(args[0]);
+        Integer numOfElevators = tryParse(args[1]);
         
-        
-        numberOfFloors = getNumberOfFloors(args);
-        numberOfElevators = getNumberOfElevators(args);
-        
-        createFloors(numberOfFloors);
-        createElevators(numberOfElevators);
-        createControler(numberOfFloors, numberOfElevators);
+        Building building = new Building(numOfFloors);
+
+        ElevatorBank elevatorBank = new ElevatorBank(numOfFloors, numOfElevators);
+
+        elevatorController(numberOfFloors, numberOfElevators);
  
-    }
-    
-    private Integer getNumberOfFloors(String[] args){
-        
     }
 }
