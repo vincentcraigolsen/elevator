@@ -44,17 +44,14 @@ public class ElevatorController {
 
     private static void answerElevatorButtonPanelFloorRequests() {
         for (Object elevator : elevatorBank) {
-            if (((Elevator) elevator).getMaintenanceMode() == true) continue;
-            for (Map.Entry<Integer, Boolean> buttonEntry : ((Elevator) elevator).getButtonPanel().getFloorButtons().entrySet()) {
-                if (buttonEntry.getValue() == true) {
-                    updateDestinationFloorWithRequestedFloor((Elevator) elevator, buttonEntry.getKey());
-                }
+            if (((Elevator) elevator).getMaintenanceMode() == true) {
+                continue;
             }
+            readButtonPanel((Elevator) elevator);
         }
     }
 
     private static void moveElevators() {
-        Integer topFloor = building.topFloor();
         Integer bottomFloor = 1;
 
         for (Object elevator : elevatorBank) {
@@ -62,26 +59,18 @@ public class ElevatorController {
                 ((Elevator) elevator).setMaintenanceMode(Boolean.TRUE);
                 sendElevator((Elevator) elevator, bottomFloor);
             }
-            
-//            if (((Elevator) elevator).getCurrentFloor().equals(topFloor)){
-//                ((Elevator) elevator).setUp(Boolean.FALSE);
-//            }
-            
-            if (((Elevator) elevator).getStopCount().compareTo(0) != 0) {
-                ((Elevator) elevator).setStopCount(((Elevator) elevator).getStopCount()-1);
+
+            if (((Elevator) elevator).getStopCount().compareTo(0) != 0) {                
+                ((Elevator) elevator).setStopCount(((Elevator) elevator).getStopCount() - 1);
                 continue;
             } else if (((Elevator) elevator).getDestinationFloor().compareTo(0) > 0) {
-                
+                //if currentFloor = destinationFloor, setDoorsOpen = true, setStopTime = 10, setTripsTraveled = getTripsTraveled + 1, ButtonPanel.getKey(currentfloor).setValue(false), setDestinationFloor = -1, readButtonPanel((Elevator) elevator);
+                //else if destinationFloor > currentFloor, setUp = true, setDown = false, setDoorOpen = false, setCurrentFloor = getCurrentFloor + 1, setFloorsTraveled = getFloorsTraveled + 1
+                //else if destinationFloor < currentFloor, setUp = false, setDown = true, setDoorOpen = false, setCurrentFloor = getCurrentFloor - 1, setFloorsTraveled = getFloorsTraveled + 1
+            } else {
+                continue;
             }
-            
-            
-
-        //close the door if necessary
-            //change the direction of the elevator if necessary
-            //increment floorsTraveled by absolute value of currentFloor-destinationFloor
-            //increment tripsMade by 1
         }
-
     }
 
     private static Elevator selectClosestElevator(Integer floorNumCalled, Boolean up, Boolean down) {
@@ -105,4 +94,11 @@ public class ElevatorController {
         //if the floor requested is between the current position and the destinationFloor, set the destinationFloor to the requested floor
     }
 
+    private static void readButtonPanel(Elevator elevator) {
+        for (Map.Entry<Integer, Boolean> buttonEntry : elevator.getButtonPanel().getFloorButtons().entrySet()) {
+            if (buttonEntry.getValue() == true) {
+                updateDestinationFloorWithRequestedFloor(elevator, buttonEntry.getKey());
+            }
+        }
+    }
 }

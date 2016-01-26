@@ -9,7 +9,6 @@ public class Elevator {
     public Integer destinationFloor;
     public Boolean up;
     public Boolean down;
-    public Boolean moving;
     public Boolean doorOpen;
     public Integer floorsTraveled;
     public Integer tripsMade;
@@ -22,7 +21,6 @@ public class Elevator {
         this.destinationFloor = 1;
         this.up = false;
         this.down = false;
-        this.moving = false;
         this.doorOpen = true;
         this.floorsTraveled = 0;
         this.tripsMade = 0;
@@ -70,14 +68,6 @@ public class Elevator {
         this.down = down;
     }
 
-    public Boolean getMoving() {
-        return moving;
-    }
-
-    public void setMoving(Boolean moving) {
-        this.moving = moving;
-    }
-
     public Boolean getDoorOpen() {
         return doorOpen;
     }
@@ -120,12 +110,17 @@ public class Elevator {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.currentFloor);
-        hash = 47 * hash + Objects.hashCode(this.destinationFloor);
-        hash = 47 * hash + Objects.hashCode(this.up);
-        hash = 47 * hash + Objects.hashCode(this.down);
-        hash = 47 * hash + Objects.hashCode(this.moving);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.buttonPanel);
+        hash = 29 * hash + Objects.hashCode(this.currentFloor);
+        hash = 29 * hash + Objects.hashCode(this.destinationFloor);
+        hash = 29 * hash + Objects.hashCode(this.up);
+        hash = 29 * hash + Objects.hashCode(this.down);
+        hash = 29 * hash + Objects.hashCode(this.doorOpen);
+        hash = 29 * hash + Objects.hashCode(this.floorsTraveled);
+        hash = 29 * hash + Objects.hashCode(this.tripsMade);
+        hash = 29 * hash + Objects.hashCode(this.maintenanceMode);
+        hash = 29 * hash + Objects.hashCode(this.stopCount);
         return hash;
     }
 
@@ -138,6 +133,9 @@ public class Elevator {
             return false;
         }
         final Elevator other = (Elevator) obj;
+        if (!Objects.equals(this.buttonPanel, other.buttonPanel)) {
+            return false;
+        }
         if (!Objects.equals(this.currentFloor, other.currentFloor)) {
             return false;
         }
@@ -150,7 +148,19 @@ public class Elevator {
         if (!Objects.equals(this.down, other.down)) {
             return false;
         }
-        if (!Objects.equals(this.moving, other.moving)) {
+        if (!Objects.equals(this.doorOpen, other.doorOpen)) {
+            return false;
+        }
+        if (!Objects.equals(this.floorsTraveled, other.floorsTraveled)) {
+            return false;
+        }
+        if (!Objects.equals(this.tripsMade, other.tripsMade)) {
+            return false;
+        }
+        if (!Objects.equals(this.maintenanceMode, other.maintenanceMode)) {
+            return false;
+        }
+        if (!Objects.equals(this.stopCount, other.stopCount)) {
             return false;
         }
         return true;
@@ -158,6 +168,6 @@ public class Elevator {
 
     @Override
     public String toString() {
-        return "Elevator{" + "buttonPanel=" + buttonPanel + ", currentFloor=" + currentFloor + ", destinationFloor=" + destinationFloor + ", up=" + up + ", down=" + down + ", moving=" + moving + ", doorOpen=" + doorOpen + ", floorsTraveled=" + floorsTraveled + ", tripsMade=" + tripsMade + ", maintenanceMode=" + maintenanceMode + ", stopCount=" + stopCount + '}';
+        return "Elevator{" + "buttonPanel=" + buttonPanel + ", currentFloor=" + currentFloor + ", destinationFloor=" + destinationFloor + ", up=" + up + ", down=" + down + ", doorOpen=" + doorOpen + ", floorsTraveled=" + floorsTraveled + ", tripsMade=" + tripsMade + ", maintenanceMode=" + maintenanceMode + ", stopCount=" + stopCount + '}';
     }
 }
