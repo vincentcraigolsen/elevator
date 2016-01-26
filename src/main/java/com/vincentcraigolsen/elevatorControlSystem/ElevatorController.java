@@ -8,7 +8,16 @@ import java.util.Map;
 
 public class ElevatorController {
 
-    public static void elevatorController(Building building, ElevatorBank elevatorBank) {
+    static Building building;
+    static ElevatorBank elevatorBank;
+
+    public ElevatorController(Building building, ElevatorBank elevatorBank) {
+        this.building = building;
+        this.elevatorBank = elevatorBank;
+    }
+    
+    
+    public static void controlElevator() { //Building building, ElevatorBank elevatorBank
         Boolean run = true;
         Integer topFloor = building.topFloor();
 
@@ -30,7 +39,7 @@ public class ElevatorController {
             for (Object elevator : elevatorBank) {
                 for (Map.Entry<Integer, Boolean> buttonEntry : ((Elevator) elevator).getButtonPanel().getFloorButtons().entrySet()) {
                     if (buttonEntry.getValue() == true) {
-                        sendElevator((Elevator) elevator,)
+//                        sendElevator((Elevator) elevator,)
                     }
                 }
             }
